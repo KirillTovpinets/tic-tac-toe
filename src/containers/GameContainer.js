@@ -7,7 +7,7 @@ class GameContainer extends React.Component{
         this.state = {
             firstTern: true
         }
-    }
+		}
     toggleTern(){
         this.setState({
             firstTern: !this.state.firstTern
@@ -16,7 +16,7 @@ class GameContainer extends React.Component{
     }
     render(){
         return <div className='board'>
-                    <Game first={this.state.firstTern} toggleTern={this.toggleTern.bind(this)}/>
+									<Game first={this.state.firstTern} toggleTern={this.toggleTern.bind(this)}/>
                 </div>
     }
 }

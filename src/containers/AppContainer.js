@@ -4,11 +4,9 @@ import GameContainer from '../containers/GameContainer';
 
 import { BrowserRouter, Route } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faStroopwafel, faTimes, faCircle } from '@fortawesome/free-solid-svg-icons'
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faStroopwafel)
 library.add(faTimes)
-library.add(faCircle)
 
 export default class AppContainer extends React.Component{
     constructor(){

@@ -7,15 +7,18 @@ class SlotContainer extends React.Component{
         this.state = {
             clicked: false
         }
-    }
+		}
+		shouldComponentUpdate(nextProps, nextState){
+			return !this.state.clicked;
+		}
     clickAction(){
         this.setState({
-            clicked: !this.state.clicked
+            clicked: true
         })
         this.props.toggleTern()
     }
     render() {
-        return <Slot clickHandler={this.clickAction.bind(this)} disable={this.state.clicked}/>;
+        return <Slot clickHandler={this.clickAction.bind(this)} first={this.props.first} disable={this.state.clicked}/>;
     }
 }
 
