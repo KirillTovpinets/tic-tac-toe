@@ -1,8 +1,8 @@
 import React from 'react';
 
-function Slot({clickHandler}){
+function Slot({ clickHandler, disable }){
     return (
-        <div className='slot' onClick={clickHandler}></div>
+        <div className={'slot ' + (disable ? 'disable' : '')} onClick={clickHandler}></div>
     )
 }
 
