@@ -74,3 +74,9 @@
   align-items: center;
   color: #fff;
 }
+.display .icon{
+  opacity: .5;
+}
+.display .icon.active{
+  opacity: 1;
+}

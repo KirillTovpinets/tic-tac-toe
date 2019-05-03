@@ -1,10 +1,14 @@
 import React, { Fragment } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-function Display() {
+function Display({first}) {
     return <Fragment>
-        <FontAwesomeIcon icon='times'/>
-        <FontAwesomeIcon icon='circle'/>
+        <div className={first ? 'active icon' : 'icon'}>
+            <FontAwesomeIcon icon='times'/>
+        </div>
+        <div className={!first ? 'active icon' : 'icon'}>
+            <FontAwesomeIcon icon='circle'/>
+        </div>
     </Fragment>
 }
 

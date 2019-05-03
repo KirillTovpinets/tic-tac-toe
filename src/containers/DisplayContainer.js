@@ -3,7 +3,7 @@ import Display from '../views/Display';
 
 class DisplayContainer extends React.Component{
     render() {
-        return <Display/>;
+        return <Display first={this.props.first}/>;
     }
 }
 
