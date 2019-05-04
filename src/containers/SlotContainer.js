@@ -8,8 +8,13 @@ class SlotContainer extends React.Component{
             clicked: false
         }
     }
+    componentWillReceiveProps(nextProps){
+        if(nextProps.stat.times.length === 0 && nextProps.stat.circle.length === 0){
+            this.setState({clicked: false});
+        }
+    }
     shouldComponentUpdate(nextProps, nextState){
-        return !this.state.clicked || nextProps.winner.includes(this.props.id);
+        return !this.state.clicked || nextProps.winner.includes(this.props.id) || !nextState.clicked;
     }
     clickAction(){
         this.setState({
@@ -23,7 +28,11 @@ class SlotContainer extends React.Component{
         this.props.toggleTern();
     }
     render() {
-        return <Slot clickHandler={this.props.winner.length === 0 ? this.clickAction.bind(this) : null} id={this.props.id} winner={this.props.winner} first={this.props.first} disable={this.state.clicked}/>;
+        return <Slot clickHandler={this.props.winner.length === 0 ? this.clickAction.bind(this) : null} 
+                    id={this.props.id} 
+                    winner={this.props.winner} 
+                    first={this.props.first} 
+                    disable={this.state.clicked}/>;
     }
 }
 

@@ -34,10 +34,15 @@
   font-size: 2rem;
   color: #fff;
 }
-
+.btn:disabled{
+  opacity: 0.5;
+}
 .btn:hover{
   background-color: #09096b;
   cursor: pointer;
+}
+.btn:disabled:hover{
+  cursor: not-allowed;
 }
 
 .board{
@@ -51,7 +56,7 @@
   height: 606px;
   display: flex;
   flex-wrap: wrap;
-  margin-right: 50px;
+  margin: 0px 50px;
 }
 .slot{
   height: 200px;

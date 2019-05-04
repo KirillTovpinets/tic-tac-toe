@@ -64,10 +64,10 @@ class GameContainer extends React.Component{
                 case 'indiag':
                     step = 4;
                     checkFunc = function (element, values) {
-                        if (values.includes(element + 4) && values.includes(element + 8)) {
+                        if (element === 0 && values.includes(element + 4) && values.includes(element + 8)) {
                             return [element, element + 4, element + 8];
                         }
-                        if (values.includes(element + 2) && values.includes(element + 4)) {
+                        if (element === 2 && values.includes(element + 2) && values.includes(element + 4)) {
                             return [element, element + 2, element + 4];;
                         }
                         return [];
@@ -84,10 +84,23 @@ class GameContainer extends React.Component{
             return result;
         }
     }
-
+    reset(){
+        this.setState({
+            firstTern: true,
+            game: {
+                times: [],
+                circle: []
+            },
+            winner:[]
+        })
+    }
     render(){
         return <div className='board'>
-                    <Game first={this.state.firstTern} winner={this.state.winner} stat={this.state.game} toggleTern={this.checkField.bind(this)}/>
+                    <Game first={this.state.firstTern} 
+                            winner={this.state.winner} 
+                            stat={this.state.game} 
+                            toggleTern={this.checkField.bind(this)}
+                            resetGame={this.reset.bind(this)}/>
                 </div>
     }
 }
