@@ -1,5 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircle } from '@fortawesome/free-regular-svg-icons';
 import './App.css';
 
 class App extends React.Component {
@@ -16,7 +17,7 @@ class App extends React.Component {
         </div>
         <button className="btn" onClick={this.start.bind(this)}>Start</button>
         <div className="zero user">
-          <FontAwesomeIcon icon="circle" />
+          <FontAwesomeIcon icon={faCircle} />
           <input className="form-control" type="text" ref="_secondUser"/>
         </div>
       </header>
