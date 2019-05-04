@@ -9,7 +9,8 @@ class GameContainer extends React.Component{
             game: {
                 times: [],
                 circle: []
-            }
+            },
+            winner:[]
         }
     }
     checkField(){
@@ -18,15 +19,22 @@ class GameContainer extends React.Component{
 
         const checkTimes = this.checkWinner(this.state.game.times);
         const checkCircle = this.checkWinner(this.state.game.circle);
-        const times = [checkTimes('inrow'), checkTimes('incolumn'), checkTimes('indiag')];
-        const circles = [checkCircle('inrow'), checkCircle('incolumn'), checkCircle('indiag')];
-        if(times.includes(true)){
-            console.log('times is winner');
-        } else if (circles.includes(true)) {
-            console.log('circle is winner');
-        }
+        const times = checkTimes('inrow').length > 0 ? 
+                            checkTimes('inrow') :
+                            checkTimes('incolumn').length > 0 ?
+                                checkTimes('incolumn') :
+                                checkTimes('indiag').length > 0 ?
+                                    checkTimes('indiag') : [];
+
+        const circles = checkCircle('inrow').length > 0 ? 
+                            checkCircle('inrow') :
+                            checkCircle('incolumn').length > 0 ?
+                                checkCircle('incolumn') :
+                                checkCircle('indiag').length > 0 ?
+                                    checkCircle('indiag') : [];
         this.setState({
             ...this.state,
+            winner: times.length > 0 ? times : circles,
             firstTern: !this.state.firstTern
         });
     }
@@ -39,37 +47,38 @@ class GameContainer extends React.Component{
                     step = 1;
                     checkFunc = function (element, values, step) {
                         if (element % 3 === 0 && values.includes(element + step) && values.includes(element + step*2)) {
-                            return true;
+                            return [element, element + step, element + step*2];
                         }
-                        return false;
+                        return [];
                     }
                     break;
                 case 'incolumn':
                     step = 3;
                     checkFunc = function (element, values, step) {
                         if (values.includes(element + step) && values.includes(element + step*2)) {
-                            return true;
+                            return [element, element + step, element + step*2];
                         }
-                        return false;
+                        return [];
                     }
                     break;
                 case 'indiag':
                     step = 4;
                     checkFunc = function (element, values) {
                         if (values.includes(element + 4) && values.includes(element + 8)) {
-                            return true;
+                            return [element, element + 4, element + 8];
                         }
                         if (values.includes(element + 2) && values.includes(element + 4)) {
-                            return true;
+                            return [element, element + 2, element + 4];;
                         }
-                        return false;
+                        return [];
                     }
                     break;
             }
-            let result = false;
+            let result = [];
             values.forEach(element => {
-                if (checkFunc(element, values, step)) {
-                    result = true;
+                let winner = checkFunc(element, values, step);
+                if (winner.length > 0) {
+                    result = winner;
                 }
             });
             return result;
@@ -78,7 +87,7 @@ class GameContainer extends React.Component{
 
     render(){
         return <div className='board'>
-                    <Game first={this.state.firstTern} stat={this.state.game} toggleTern={this.checkField.bind(this)}/>
+                    <Game first={this.state.firstTern} winner={this.state.winner} stat={this.state.game} toggleTern={this.checkField.bind(this)}/>
                 </div>
     }
 }
