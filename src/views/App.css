@@ -95,7 +95,18 @@
 .display .icon.active{
   opacity: 1;
 }
-
+.navigation{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.navigation .status{
+  text-align: center;
+  color: #fff;
+  font-size: 5rem;
+  margin-top: 0;
+}
 @keyframes winner{
   0%{
     font-size: 8rem;

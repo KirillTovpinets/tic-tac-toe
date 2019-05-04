@@ -10,7 +10,8 @@ class GameContainer extends React.Component{
                 times: [],
                 circle: []
             },
-            winner:[]
+            winner:[],
+            history:[0, 0]
         }
     }
     checkField(){
@@ -32,10 +33,17 @@ class GameContainer extends React.Component{
                                 checkCircle('incolumn') :
                                 checkCircle('indiag').length > 0 ?
                                     checkCircle('indiag') : [];
+        let history = this.state.history;
+        if(times.length > 0) {
+            history[0] += 1;
+        } else if(circles.length > 0) {
+            history[1] += 1;
+        }
         this.setState({
             ...this.state,
             winner: times.length > 0 ? times : circles,
-            firstTern: !this.state.firstTern
+            firstTern: !this.state.firstTern,
+            history: history
         });
     }
     checkWinner(values){
@@ -98,7 +106,8 @@ class GameContainer extends React.Component{
         return <div className='board'>
                     <Game first={this.state.firstTern} 
                             winner={this.state.winner} 
-                            stat={this.state.game} 
+                            stat={this.state.game}
+                            history={this.state.history}
                             toggleTern={this.checkField.bind(this)}
                             resetGame={this.reset.bind(this)}/>
                 </div>
