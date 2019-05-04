@@ -3,13 +3,17 @@ import './App.css';
 import SlotContainer from '../containers/SlotContainer';
 import DisplayContainer from '../containers/DisplayContainer';
 
-function Game({first, toggleTern, stat, winner, resetGame, history}){
+function Game({first, toggleTern, stat, winner, resetGame, history, navBack}){
     const slots = Array(9).fill(0, 0, 9);
     return <Fragment>
                 <div className="navigation">
                     <h1 className="status"><span>{history[0]}</span>:<span>{history[1]}</span></h1>
-                    <button className="btn" onClick={resetGame} disabled={winner.length > 0 ||
-                                                                          stat.times.length + stat.circle.length === 9 ? null : 'disabled'}>NEW GAME</button>
+                    <button className="btn" 
+                            onClick={resetGame} 
+                            disabled={winner.length > 0 ||
+                                    stat.times.length + stat.circle.length === 9 ? null : 'disabled'}>NEW GAME</button>
+                    <button className='btn btn-back' onClick={navBack}>EXIT</button>
+
                 </div>
                 <div className='slot-container'>
                     {slots.map((slot, index) => <SlotContainer first={first} 

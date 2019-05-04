@@ -102,6 +102,9 @@ class GameContainer extends React.Component{
             winner:[]
         })
     }
+    navBack(){
+        document.location.href = '/';
+    }
     render(){
         return <div className='board'>
                     <Game first={this.state.firstTern} 
@@ -109,6 +112,7 @@ class GameContainer extends React.Component{
                             stat={this.state.game}
                             history={this.state.history}
                             toggleTern={this.checkField.bind(this)}
+                            navBack={this.navBack}
                             resetGame={this.reset.bind(this)}/>
                 </div>
     }
