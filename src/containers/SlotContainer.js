@@ -1,5 +1,7 @@
 import React from 'react';
 import Slot from '../views/Slot';
+import * as actions from '../actions';
+import { connect } from 'react-redux';
 
 class SlotContainer extends React.Component{
     constructor(props){
@@ -17,23 +19,24 @@ class SlotContainer extends React.Component{
         return !this.state.clicked || nextProps.winner.includes(this.props.id) || !nextState.clicked;
     }
     clickAction(){
-        this.setState({
-            clicked: true
-        });
-        if (this.props.first) {
-            this.props.stat.times.push(this.props.id);
-        } else {
-            this.props.stat.circle.push(this.props.id);
-        }
-        this.props.toggleTern();
+				this.props.placeMark(this.props.id, this.props.first ? 'times' : 'circle' );
+				this.setState({
+					clicked: true
+				})
     }
     render() {
-        return <Slot clickHandler={this.props.winner.length === 0 ? this.clickAction.bind(this) : null} 
-                    id={this.props.id} 
-                    winner={this.props.winner} 
-                    first={this.props.first} 
+				return <Slot id={this.props.id} 
+										clickHandler={this.clickAction.bind(this)}
+										first={this.props.first}
+										winner={this.props.winner}
                     disable={this.state.clicked}/>;
     }
 }
 
-export default SlotContainer;
+export default connect( state => ({
+	first: state.firstTern,
+	winner: state.winner,
+	stat: state.game
+}), {
+	placeMark: actions.place_mark
+})(SlotContainer);

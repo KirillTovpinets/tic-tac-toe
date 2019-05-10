@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import App from '../views/App';
-import GameContainer from '../containers/GameContainer';
+import Game from '../views/Game';
 
 import { BrowserRouter, Route } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -24,7 +24,7 @@ export default class AppContainer extends React.Component{
         return <BrowserRouter basename={process.env.PUBLIC_URL}>
                     <Fragment>
                         <Route exact path="/" render={ route =>  <App startAct={this.updateUsers.bind(this)}/>}/>
-                        <Route exact path="/game" render={ route =>  <GameContainer />}/>
+                        <Route exact path="/game" render={ route =>  <Game />}/>
                     </Fragment>
                 </BrowserRouter>;
     }
