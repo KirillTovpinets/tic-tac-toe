@@ -4,10 +4,11 @@ import SlotContainer from '../containers/SlotContainer';
 import DisplayContainer from '../containers/DisplayContainer';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+import * as selectors from '../selectors';
 
-function Game({ history, winner, stat, newGame}){
+function Game({ history, winner, stat, newGame, keyPress}){
     const slots = Array(9).fill(0, 0, 9);
-    return <div className="board">
+    return <div className="board" onKeyPress={keyPress}>
                 <div className="navigation">
                     <h1 className="status"><span>{history[0]}</span>:<span>{history[1]}</span></h1>
                     <button className="btn" 
@@ -27,10 +28,10 @@ function Game({ history, winner, stat, newGame}){
 }
 
 export default connect(state => ({
-	history: state.history,
-	winner: state.winner,
-	stat: state.game,
-
+	history: selectors.selectGame(state).history,
+	winner: selectors.selectGame(state).winner,
+	stat: selectors.selectGame(state).game,
 }), {
-	newGame: actions.newgame
+	newGame: actions.newgame,
+	keyPress: actions.keyPress
 })(Game);

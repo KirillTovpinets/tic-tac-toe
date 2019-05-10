@@ -1,6 +1,7 @@
 import React from 'react';
 import Slot from '../views/Slot';
 import * as actions from '../actions';
+import * as selectors from '../selectors';
 import { connect } from 'react-redux';
 
 class SlotContainer extends React.Component{
@@ -34,9 +35,9 @@ class SlotContainer extends React.Component{
 }
 
 export default connect( state => ({
-	first: state.firstTern,
-	winner: state.winner,
-	stat: state.game
+	first: selectors.selectGame(state).firstTern,
+	winner: selectors.selectGame(state).winner,
+	stat: selectors.selectGame(state).game
 }), {
 	placeMark: actions.place_mark
 })(SlotContainer);
