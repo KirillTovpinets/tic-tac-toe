@@ -1,33 +1,54 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
 import './App.css';
 
 class App extends React.Component {
-  start(){
-    const { _firstUser, _secondUser } = this.refs;
+  constructor() {
+    super();
+    this.state = {
+      _firstUser: '',
+      _secondUser: '',
+    };
+  }
+  start() {
+    const { _firstUser, _secondUser } = this.state;
     this.props.startAct(_firstUser, _secondUser);
   }
-  keyPressAct(e) {
-    if(e.key === 'Enter') {
-      console.log(e.key);
-    }
-  }
-  render() {
-    return (<div className="App">
-      <header className="App-header">
-        <div className="cross user">
-          <FontAwesomeIcon icon="times" />
-          <input className="form-control" type="text" ref="_firstUser" onKeyPress={this.keyPressAct}/>
-        </div>
-        <button className="btn" onClick={this.start.bind(this)} onKeyPress={this.keyPressAct}>Start</button>
-        <div className="zero user">
-          <FontAwesomeIcon icon={faCircle} />
-          <input className="form-control" type="text" ref="_secondUser" onKeyPress={this.keyPressAct}/>
-        </div>
-      </header>
-    </div>);
+
+  handletUser = (field) => (event) => {
+    this.setState({ ...this.state, [field]: event.target.value });
   };
+
+  render() {
+    return (
+      <div className="Tic-Tac-Toe-App">
+        <header className="App-header">
+          <div className="cross user">
+            <FontAwesomeIcon icon="times" />
+            <input
+              className="form-control"
+              type="text"
+              placeholder="Enter Your Name"
+              onChange={this.handletUser('_secondUser')}
+            />
+          </div>
+          <button className="btn" onClick={this.start.bind(this)}>
+            Start
+          </button>
+          <div className="zero user">
+            <FontAwesomeIcon icon={faCircle} />
+            <input
+              className="form-control"
+              type="text"
+              placeholder="Enter Your Name"
+              onChange={this.handletUser('_firstUser')}
+            />
+          </div>
+        </header>
+      </div>
+    );
+  }
 }
 
 export default App;

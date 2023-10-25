@@ -1,5 +1,5 @@
-
-.App {
+.Tic-Tac-Toe-App {
+  background-color: #282c34;
   text-align: center;
 }
 
@@ -11,88 +11,89 @@
   font-size: 10rem;
   color: white;
 }
-.user{
+.user {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.user .form-control{
+.user .form-control {
   margin-top: 2rem;
-  background-color: rgba(255, 255, 255, .7);
-  border:none;
-  padding: .75rem 1rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  padding: 0.75rem 1rem;
   font-size: 1.5rem;
   text-align: center;
 }
-.btn{
+.btn {
   -webkit-appearance: none;
   appearance: none;
-  border:none;
+  border: none;
   background: blue;
-  padding: .75rem 4rem;
+  padding: 0.75rem 4rem;
   text-transform: uppercase;
   font-size: 2rem;
   color: #fff;
   margin-bottom: 30px;
 }
 .btn:active,
-.btn:focus{
+.btn:focus {
   outline: none;
 }
-.btn-back{
+.btn-back {
   background-color: red;
 }
-.btn:disabled{
+.btn:disabled {
   opacity: 0.5;
 }
-.btn:hover{
+.btn:hover {
   background-color: #09096b;
   cursor: pointer;
 }
-.btn-back:hover{
+.btn-back:hover {
   background-color: #841414;
 }
-.btn:disabled:hover{
+.btn:disabled:hover {
   cursor: not-allowed;
 }
 
-.board{
+.board {
+  background-color: #282c34;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.slot-container{
+.slot-container {
   width: 606px;
   height: 606px;
   display: flex;
   flex-wrap: wrap;
   margin: 0px 50px;
 }
-.slot{
+.slot {
   height: 200px;
   width: 200px;
-  background-color: rgba(255, 255, 255, .7);
-	border: 1px solid #fff;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: 10rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10rem;
   color: #fff;
 }
-.slot:hover{
-  background-color: rgba(255, 255, 255, .4);
+.slot:hover {
+  background-color: rgba(255, 255, 255, 0.4);
   cursor: pointer;
 }
-.slot.disable{
-  background: rgba(255, 255, 255, .2);
+.slot.disable {
+  background: rgba(255, 255, 255, 0.2);
 }
 
-.slot.winner{
-  animation: winner .3s ease 0s alternate-reverse infinite;
+.slot.winner {
+  animation: winner 0.3s ease 0s alternate-reverse infinite;
 }
 
-.display{
+.display {
   font-size: 10rem;
   display: flex;
   flex-direction: column;
@@ -100,28 +101,29 @@
   align-items: center;
   color: #fff;
 }
-.display .icon{
-  opacity: .5;
+.display .icon {
+  opacity: 0.5;
 }
-.display .icon.active{
+.display .icon.active {
   opacity: 1;
 }
-.navigation{
+.navigation {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.navigation .status{
+.navigation .status {
   text-align: center;
   color: #fff;
   font-size: 5rem;
   margin-top: 0;
 }
-@keyframes winner{
-  0%{
+@keyframes winner {
+  0% {
     font-size: 8rem;
-  }100%{
+  }
+  100% {
     font-size: 10.5rem;
   }
 }
