@@ -1,9 +1,30 @@
 
-> strava@0.1.0 build
-> react-scripts build
+> tic-tac-toe@0.1.0 build
+> react-scripts --openssl-legacy-provider build
 
-sh: react-scripts: command not found
-npm ERR! Lifecycle script `build` failed with error: 
-npm ERR! Error: command failed 
-npm ERR!   in workspace: strava@0.1.0 
-npm ERR!   at location: /Users/user/Documents/github/game-mono/packages/tic-tac-toe 
+Creating an optimized production build...
+Compiled successfully.
+
+File sizes after gzip:
+
+  85.74 KB  build/static/js/2.5970a42f.chunk.js
+  2.08 KB   build/static/js/main.4d3cf101.chunk.js
+  762 B     build/static/js/runtime~main.a8a9905a.js
+  736 B     build/static/css/main.f3a20b30.chunk.css
+
+The project was built assuming it is hosted at the server root.
+You can control this with the homepage field in your package.json.
+For example, add this to build it for GitHub Pages:
+
+  "homepage" : "http://myname.github.io/myapp",
+
+The build folder is ready to be deployed.
+You may serve it with a static server:
+
+  npm install -g serve
+  serve -s build
+
+Find out more about deployment here:
+
+  https://bit.ly/CRA-deploy
+
