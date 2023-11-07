@@ -20,6 +20,9 @@
     "redux": "^4.0.1",
     "strava-v3": "^1.14.0"
   },
+  "devDependecies":{
+    "tsconfig": "workspace:*"
+  },
   "scripts": {
     "start": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts --openssl-legacy-provider build",
